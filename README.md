@@ -1,33 +1,123 @@
-# nwt4
+# NWT4 - Spectrum Analyser Software
 
-## Device
-This Repo contains Sources and Documentation for
-[Geekcreit® Spectrum Analyzer USB LTDZ_35-4400M](https://www.banggood.com/Geekcreit-Spectrum-Analyzer-USB-LTDZ_35-4400M_Spectrum-Signal-Source-with-Tracking-Source-Module-RF-Frequency-Domain-Analysis-Tool-p-1450129.html)
+NWT4 is a versatile and comprehensive software tool designed to work with the nwt4 and 35m-4400m spectrumanalysers. This software provides a user-friendly interface for conducting and visualizing spectrum analysis efficiently.
 
-| Property | Value |
-| - | - |
-|Attribute | RF frequency domain analysis tool |
-|Interface | usb |
-|Power supply | usb |
-|Standby current | ≤100mA |
-|Sweep current | ≤350mA |
-|Sweep bandwidth | 33mHz—4400mHz |
-|Turn on the tracking source output bandwidth | 33mhz—3000mhz |
-|Sweep step | ≥ 33~68.75mHz/125Hz, 68.75~137.5mHz/250Hz, 137.5~275mHz/500Hz, 275~550mHz/1kHz 550~1100mHz/2kHz, 1100~2200mHz/4kHz, 2200~4400mHz/8kHz |
-|Sweep speed | ≥800 points / sec |
-|Sweep dynamic log ratio | > 50dB |
-|Point frequency or sweep output power | ≈0 dBm |
-|Input detection | ≤10dbm |
-|Background | ≈ -60dBm |
+## Features
 
-[Details](https://www.epanorama.net/blog/2019/08/10/cheap-spectrum-analyzer-and-signal-generator/)
+- **Support for NWT and 35m-4400m**: Fully compatible with the nwt4 and 35m-4400m spectrumanalyser boards.
+- **Real-time Spectrum Analysis**: Conduct real-time analysis and view detailed spectrum graphs.
+- **Frequency Range**: Capable of analysing a wide range of frequencies.
+- **User-friendly Interface**: Easy-to-use interface designed for both professionals and hobbyists.
+- **Data Export**: Export analysis results in various formats for further processing or reporting.
+- **Customizable Settings**: Configure settings to suit your specific analysis needs.
 
-## Software
+## Installation
 
-GUI based Software (Linux & WinXP, Win7, Win10) was developed and maintained by Andreas Lindenau [DL4JAL](https://www.dl4jal.de)
+### Prerequisites
 
+Before you begin, ensure you have the following software installed:
 
+- Qt6
+- CMake
+- C++ Compiler (like GCC)
 
+### Linux (Ubuntu)
 
+1. **Clone the repository:**
 
+    ```sh
+    git clone https://github.com/chrisabit-it/nwt4.git
+    cd nwt4
+    ```
 
+2. **Build the software:**
+
+    ```sh
+    mkdir build
+    cd build
+    cmake ..
+    make
+    ```
+
+3. **Run the software:**
+
+    ```sh
+    ./nwt4
+    ```
+
+### Debian Package
+
+To create a Debian package, follow these steps:
+
+1. **Build the package:**
+
+    ```sh
+    cd build
+    cpack
+    ```
+
+2. **Install the package:**
+
+    ```sh
+    sudo dpkg -i nwt4_<version>_amd64.deb
+    ```
+
+3. **Run the software:**
+
+    ```sh
+    nwt4
+    ```
+
+## Usage
+
+1. Connect your spectrumanalyser (NWT or 35m-4400m) to your computer.
+2. Start the NWT4 Software.
+3. Configure the frequency range and analysis settings as needed.
+4. Click the "Sweep" button to begin the spectrum analysis.
+5. View the results in real time on the graph.
+
+## Boards
+
+The NWT4 software is rather ancient. A unknown amount of boards were developed.
+Currently the focus seems to be on boards from China: 
+
+[PCB](./doc/sa-35m-4400m_pcb.jpg)
+
+The following applies to this board:
+
+- Don't use NWT4's "Settings/Firmware Update"!
+- If you want to backup/update the Firmware - use the onboard SWD connector accordingly! 
+- "Frequency Multiplication" is set to Factor 10 on default. Don't change this value in the Settings.
+- If you want to calibrate using "Sweep/Channel # Calibration":
+  - you have to use the logarithmic mode! 
+  - you have to insert a 40db attenuator between RFout an RFin
+  - linear mode is not supported!
+
+## Contributing
+
+Contributions are welcome! Please read the [CONTRIBUTING.md](CONTRIBUTING.md) file for guidelines on how to contribute to this project.
+
+**Please note**:
+
+- The Software was originally developed using Qt4
+- It has been ported by chrisabit-it@posteo.de using Qt6
+- The software was _not_ developed by the project maintainer
+- The software _not_ refactored. There is a _huge_ amount of code that can be optimised.
+- The software was developed for the German amateur radio sector. Therefore, many code sections are written in German. 
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+
+The original developer and copyright owner is:
+    
+- Andreas Lindenau
+- DL4JAL@darc.de
+
+## Contact
+
+If you have any questions, issues, or suggestions, please open an issue on GitHub or contact the project maintainer at [chrisabit-it@posteo.de](mailto:youremail@domain.com).
+
+---
+
+Thank you for using NWT4!
